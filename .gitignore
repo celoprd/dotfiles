@@ -1,0 +1,32 @@
+# Dotfiles .gitignore
+
+# Backup files created by symlink script
+*.backup
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Sensitive information - DO NOT COMMIT
+config/.env.zsh
+
+# Keep template instead
+!config/.env.zsh.example
+
+# Local modifications (if you create any)
+local/
+*.local
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo

@@ -1,0 +1,162 @@
+# ===== USER INFORMATION =====
+[user]
+	name = Celo
+	email = your.email@skello.io
+	signingkey = F3BE06CAA518DA6F
+	# GPG key for signing commits (will be set automatically by setup script)
+	# signingkey = YOUR_GPG_KEY_ID
+
+# ===== COMMIT SIGNING =====
+[commit]
+	# Sign all commits by default
+	gpgsign = true
+
+[gpg]
+	program = gpg
+
+# ===== CORE SETTINGS =====
+[core]
+	editor = code --wait
+	autocrlf = input
+	excludesfile = ~/.gitignore_global
+	# Better diff for long lines
+	pager = less -FMRiX
+
+# ===== COLORS =====
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	status = auto
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = red
+
+# ===== ALIASES =====
+[alias]
+	# Short status
+	s = status -s
+
+	# List branches
+	br = branch
+
+	# Checkout
+	co = checkout
+	cob = checkout -b
+
+	# Commit
+	ci = commit
+	cm = commit -m
+	ca = commit --amend
+	can = commit --amend --no-edit
+
+	# Push/Pull
+	p = push
+	pl = pull
+	pom = push origin main
+	pos = push origin sandbox
+
+	# Log
+	l = log --oneline
+	lg = log --oneline --graph --decorate --all
+	last = log -1 HEAD
+
+	# Diff
+	d = diff
+	dc = diff --cached
+
+	# Stash
+	st = stash
+	stp = stash pop
+	stl = stash list
+
+	# Undo last commit (keep changes)
+	undo = reset --soft HEAD^
+
+	# Discard changes
+	discard = checkout --
+
+	# Clean up merged branches
+	cleanup = "!git branch --merged | grep -v '\\*\\|main\\|master\\|sandbox' | xargs -n 1 git branch -d"
+
+	# Show contributors
+	contributors = shortlog --summary --numbered --email
+
+# ===== PULL SETTINGS =====
+[pull]
+	rebase = false
+
+# ===== PUSH SETTINGS =====
+[push]
+	default = current
+	followTags = true
+
+# ===== BRANCH SETTINGS =====
+[branch]
+	autosetupmerge = true
+	autosetuprebase = always
+
+# ===== MERGE SETTINGS =====
+[merge]
+	tool = vscode
+	conflictstyle = diff3
+
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+
+# ===== DIFF SETTINGS =====
+[diff]
+	tool = vscode
+
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+
+# ===== FETCH SETTINGS =====
+[fetch]
+	prune = true
+
+# ===== REBASE SETTINGS =====
+[rebase]
+	autoStash = true
+
+# ===== CREDENTIAL HELPER =====
+[credential]
+	helper = osxkeychain
+
+# ===== INIT SETTINGS =====
+[init]
+	defaultBranch = main
+
+# ===== URL SHORTCUTS =====
+# GitHub shorthand
+[url "git@github.com:"]
+	insteadOf = gh:
+
+# Skello organization shorthand
+[url "git@github.com:skelloapp/"]
+	insteadOf = skello:
+
+# ===== HELP =====
+[help]
+	autocorrect = 1
+
+# ===== FILTER =====
+# Handle large files with Git LFS (if needed)
+# [filter "lfs"]
+# 	clean = git-lfs clean -- %f
+# 	smudge = git-lfs smudge -- %f
+# 	process = git-lfs filter-process
+# 	required = true

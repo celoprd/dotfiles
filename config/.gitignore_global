@@ -1,0 +1,143 @@
+# ===== GLOBAL GIT IGNORE =====
+# This file is used globally across all git repositories
+
+# ===== MACOS =====
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# ===== IDE & EDITORS =====
+# VSCode
+.vscode/
+*.code-workspace
+.history/
+
+# JetBrains
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.*.swp
+.*.swo
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+
+# ===== NODE.JS =====
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.npm
+.eslintcache
+.node_repl_history
+.yarn-integrity
+.env.local
+.env.*.local
+
+# ===== RUBY =====
+*.gem
+*.rbc
+.bundle
+.config
+coverage
+InstalledFiles
+lib/bundler/man
+pkg
+rdoc
+spec/reports
+test/tmp
+test/version_tmp
+tmp
+.ruby-version
+.ruby-gemset
+
+# ===== PYTHON =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ===== ENVIRONMENT VARIABLES =====
+.env
+.env.test
+.env.production
+.env.local
+.env.*.local
+*.env
+
+# ===== LOGS =====
+*.log
+logs/
+*.log.*
+
+# ===== DATABASES =====
+*.sqlite
+*.sqlite3
+*.db
+
+# ===== COMPILED FILES =====
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.dylib
+
+# ===== PACKAGES =====
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# ===== TEMP FILES =====
+*.tmp
+*.temp
+*.bak
+*.cache
+
+# ===== SECRETS & CREDENTIALS =====
+secrets.yml
+credentials.yml
+*.pem
+*.key
+*.cert
