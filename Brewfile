@@ -66,6 +66,9 @@ cask "openvpn-connect"
 cask "notion"
 cask "notion-calendar"
 
+# Security
+cask "dashlane"
+
 # ===== OPTIONAL BUT RECOMMENDED =====
 
 # Browsers (uncomment if needed)
