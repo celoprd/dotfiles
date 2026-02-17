@@ -40,13 +40,31 @@ create_symlink() {
 
 # Create symlinks for configuration files
 create_symlink "$CONFIG_DIR/.zshrc" "$HOME/.zshrc"
-create_symlink "$CONFIG_DIR/.npmrc" "$HOME/.npmrc"
 create_symlink "$CONFIG_DIR/.gitconfig" "$HOME/.gitconfig"
 create_symlink "$CONFIG_DIR/.env.zsh" "$HOME/.env.zsh"
 create_symlink "$CONFIG_DIR/.gitignore_global" "$HOME/.gitignore_global"
 
+# Special handling for .npmrc - copy instead of symlink (to store private token)
+echo ""
+echo "📝 Setting up .npmrc..."
+if [ ! -f "$HOME/.npmrc" ] || [ -L "$HOME/.npmrc" ]; then
+    if [ -L "$HOME/.npmrc" ]; then
+        echo "Removing .npmrc symlink..."
+        rm "$HOME/.npmrc"
+    fi
+    echo "Copying .npmrc template..."
+    cp "$CONFIG_DIR/.npmrc" "$HOME/.npmrc"
+    echo "⚠️  .npmrc copied (not symlinked) - you need to configure GitHub authentication"
+    echo "   Run: ./scripts/configure_npm_auth.sh"
+else
+    echo "✓ .npmrc already exists as regular file"
+fi
+
 echo ""
 echo "✓ All symbolic links created successfully"
 echo ""
-echo "Configuration files are now linked to ~/dotfiles/config/"
-echo "Any changes to files in ~/dotfiles/config/ will be reflected in your home directory"
+echo "Configuration files are now linked to $DOTFILES_DIR/config/"
+echo "Any changes to files in $DOTFILES_DIR/config/ will be reflected in your home directory"
+echo ""
+echo "⚠️  Important: .npmrc is copied (not symlinked) to allow storing your private GitHub token"
+echo "   To configure npm authentication, run: ./scripts/configure_npm_auth.sh"

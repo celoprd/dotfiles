@@ -123,15 +123,30 @@ else
 fi
 
 # Step 8: Setup symlinks
-print_step "Step 8/10: Creating symbolic links for configuration files"
+print_step "Step 8/11: Creating symbolic links for configuration files"
 if [ -f "$SCRIPTS_DIR/08_setup_symlinks.sh" ]; then
     bash "$SCRIPTS_DIR/08_setup_symlinks.sh"
 else
     print_warning "Script not found, skipping..."
 fi
 
+# Step 8.5: Configure npm authentication (optional)
+print_step "Step 8.5/11: Configuring npm authentication for GitHub Packages (optional)"
+echo "Do you want to configure npm authentication now? (requires GITHUB_TOKEN in .env.zsh) (y/N)"
+read -r response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    if [ -f "$SCRIPTS_DIR/configure_npm_auth.sh" ]; then
+        bash "$SCRIPTS_DIR/configure_npm_auth.sh"
+    else
+        print_warning "Script not found, skipping..."
+    fi
+else
+    echo "Skipping npm authentication. You can configure it later with:"
+    echo "  ./scripts/configure_npm_auth.sh"
+fi
+
 # Step 9: Setup SSH
-print_step "Step 9/10: Setting up SSH keys"
+print_step "Step 9/11: Setting up SSH keys"
 if [ -f "$SCRIPTS_DIR/09_setup_ssh.sh" ]; then
     bash "$SCRIPTS_DIR/09_setup_ssh.sh"
 else

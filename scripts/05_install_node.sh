@@ -22,11 +22,11 @@ else
     curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n -o /tmp/n
     bash /tmp/n lts
     rm /tmp/n
-    
+
     # Install n command globally via npm
     echo "Installing 'n' command..."
     $N_PREFIX/bin/npm install -g n
-    
+
     # Re-export PATH to include npm global bin
     export PATH="$HOME/.npm-global/bin:$PATH"
     echo "✓ 'n' installed"
