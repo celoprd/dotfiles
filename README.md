@@ -11,7 +11,33 @@ cd ~/dotfiles
 
 # Run complete installation
 ./install.sh
+
+# After installation, reload your shell
+source ~/.zshrc
+
+# Verify everything is installed correctly
+./scripts/verify_installation.sh
 ```
+
+**Important**: After installation, you MUST reload your shell for all tools (n, pnpm, etc.) to be available:
+```bash
+source ~/.zshrc
+# OR restart your terminal
+```
+
+## ✅ Verification
+
+To check that all tools are properly installed:
+```bash
+./scripts/verify_installation.sh
+```
+
+This will check:
+- Package managers (Homebrew, n, rbenv)
+- Node.js ecosystem (node, npm, pnpm, yarn)
+- Ruby environment
+- Development tools
+- Symlink configuration
 
 ## 📋 What's Installed
 

@@ -52,15 +52,17 @@ if command -v rbenv &> /dev/null; then
   eval "$(rbenv init - zsh)"
 fi
 
-# n (Node version manager)
+# n (Node version manager) - must be BEFORE other Node tools
 export N_PREFIX="$HOME/.n"
 export PATH="$N_PREFIX/bin:$PATH"
 
-# pnpm
-export PNPM_HOME="$HOME/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+# npm global packages (for n command and other global tools)
+export PATH="$HOME/.npm-global/bin:$PATH"
 
-# Yarn global
+# pnpm (installed via corepack, managed by n)
+# Note: pnpm binaries are in $N_PREFIX/bin, no additional path needed
+
+# Yarn global (if using standalone yarn)
 export PATH="$HOME/.yarn/bin:$PATH"
 
 # Local bin
