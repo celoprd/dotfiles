@@ -123,15 +123,23 @@ else
 fi
 
 # Step 8: Setup symlinks
-print_step "Step 8/11: Creating symbolic links for configuration files"
+print_step "Step 8/12: Creating symbolic links for configuration files"
 if [ -f "$SCRIPTS_DIR/08_setup_symlinks.sh" ]; then
     bash "$SCRIPTS_DIR/08_setup_symlinks.sh"
 else
     print_warning "Script not found, skipping..."
 fi
 
-# Step 8.5: Configure npm authentication (optional)
-print_step "Step 8.5/11: Configuring npm authentication for GitHub Packages (optional)"
+# Step 8.5: Configure GUI PATH
+print_step "Step 8.5/12: Configuring PATH for GUI applications (VS Code, MCP, etc.)"
+if [ -f "$SCRIPTS_DIR/configure_gui_path.sh" ]; then
+    bash "$SCRIPTS_DIR/configure_gui_path.sh"
+else
+    print_warning "Script not found, skipping..."
+fi
+
+# Step 8.6: Configure npm authentication (optional)
+print_step "Step 8.6/12: Configuring npm authentication for GitHub Packages (optional)"
 echo "Do you want to configure npm authentication now? (requires GITHUB_TOKEN in .env.zsh) (y/N)"
 read -r response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
@@ -146,7 +154,7 @@ else
 fi
 
 # Step 9: Setup SSH
-print_step "Step 9/11: Setting up SSH keys"
+print_step "Step 9/12: Setting up SSH keys"
 if [ -f "$SCRIPTS_DIR/09_setup_ssh.sh" ]; then
     bash "$SCRIPTS_DIR/09_setup_ssh.sh"
 else
@@ -154,7 +162,7 @@ else
 fi
 
 # Step 10: Setup GPG
-print_step "Step 10/11: Setting up GPG for commit signing"
+print_step "Step 10/12: Setting up GPG for commit signing"
 if [ -f "$SCRIPTS_DIR/10_setup_gpg.sh" ]; then
     bash "$SCRIPTS_DIR/10_setup_gpg.sh"
 else
@@ -162,7 +170,7 @@ else
 fi
 
 # Step 11: Clone Skello repositories (optional)
-print_step "Step 11/11: Cloning Skello repositories (optional)"
+print_step "Step 11/12: Cloning Skello repositories (optional)"
 echo "Do you want to clone all Skello repositories now? (y/N)"
 read -r response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
