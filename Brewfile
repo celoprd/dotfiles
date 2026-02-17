@@ -52,6 +52,7 @@ brew "eza"             # Better ls (modern replacement for exa)
 
 # Development
 cask "visual-studio-code"
+cask "postgres-unofficial"  # Postgres.app
 
 # Terminal
 cask "warp"
