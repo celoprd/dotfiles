@@ -60,7 +60,7 @@ dotfiles/
 │   ├── .zshrc                 # Zsh configuration + aliases
 │   ├── .npmrc                 # npm configuration (GitHub Packages)
 │   ├── .gitconfig             # Git configuration
-│   ├── .env.zsh               # Environment variables
+│   ├── .env.zsh.example       # Environment variables template
 │   └── .gitignore_global      # Global gitignore
 └── scripts/                    # Installation scripts
     ├── 01_install_xcode.sh
@@ -86,16 +86,23 @@ Configuration files are automatically created with symbolic links:
 
 ## ⚙️ GitHub Configuration
 
-Edit `config/.env.zsh` to add your environment variables:
+**First time setup**: Copy the environment template and configure your credentials:
+```bash
+cp ~/dotfiles/config/.env.zsh.example ~/dotfiles/config/.env.zsh
+```
+
+Then edit `config/.env.zsh` to add your actual environment variables:
 ```bash
 # GitHub Personal Access Token
 # Create at: https://github.com/settings/tokens
 # Required scopes: repo, read:packages, write:packages
-export GITHUB_TOKEN="ghp_your_personal_access_token_here"
+export GITHUB_TOKEN="your_github_token_here"
 export GITHUB_USERNAME="your_github_username"
 
 # Other environment variables
 ```
+
+**Note**: The `.env.zsh` file is in `.gitignore` to protect your secrets.
 
 **Important for npm**: After setting `GITHUB_TOKEN`, add this line to your `~/.npmrc`:
 ```bash
